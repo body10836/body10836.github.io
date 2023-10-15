@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Allura', cursive;
+    font-family: 'AR One Sans', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgba(4, 59, 72), rgb(2, 49, 62), rgb(1, 6, 7)), url(image.jpeg);
+    min-height: 100vh;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    /* to organize the elements inside the parents */
+    padding: 10px 8%;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+}
+
+nav img {
+    width: 60px;
+}
+
+.bar {
+    
+    padding-left: 750px;
+}
+
+.bar ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+}
+
+.bar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.bar ul li a:hover {
+    color: #0cd0c6;
+}
+
+.LOGO {
+    color: rgb(60, 172, 228);
+    text-decoration: none;
+    margin-right: 70px;
+}
+
+.text {
+    color: aliceblue;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    width: 60%;
+}
+
+.text h1 {
+    font-size: 45px;
+    margin: 21px;
+}
+
+.text p {
+    font-size: 19px;
+}
+
+.text a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #87abcf;
+    border: 2px solid rgb(0, 25, 33);
+    position: relative;
+    padding: 4px 27px;
+    margin: 20px;
+    display: inline-block;
+}
+
+.text a:hover {
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+}
+
+.ABOUT {
+    margin: auto;
+    text-align: center;
+    padding-top: 100vh;
+    color: #fdfafa;
+}
+
+.ABOUT h1 {
+    margin: 10px;
+}
+
+.ABOUT p {
+    font-family: 'Allura', cursive;
+    font-family: 'AR One Sans', sans-serif;
+    color: #a9bfc5;
+}
+
+.our_team {
+    margin-top: 50px;
+    margin-left: 385px;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+
+
+.our_team div {
+    margin-right: 3px;
+}
+
+.our_team div:last-child {
+    margin-right: 0;
+}
+
+.ourteam2 {
+    margin-top: 50px;
+    margin-left: 300px;
+    
+    
+}
+.members1{
+    margin: auto;
+    margin-top: -246px;
+    margin-left: -300px;
+}

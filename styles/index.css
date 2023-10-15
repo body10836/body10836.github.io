@@ -1,0 +1,33 @@
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.center {
+    text-align: center;
+    padding-bottom: 5%;
+    color: rgb(229, 171, 171);
+}
+
+body {
+    background: linear-gradient(300deg, #2C4B5D, #032A39, #000709);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 700px;
+}
+.btn{
+    padding-bottom: 100;
+}
