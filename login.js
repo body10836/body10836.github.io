@@ -38,7 +38,7 @@ signin.addEventListener('click', (e) => {
       // Signed in 
       const user = userCredential.user;
       // ...
-      document.location = "/templates/homepage.html";
+      document.location = "/homepage.html";
 
     })
     .catch((error) => {

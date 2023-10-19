@@ -40,7 +40,7 @@ reg.addEventListener('click', (e) => {
       const user = userCredential.user;
       // ...
       alert("signed up!")
-      document.location = "../index.html";
+      document.location = "/index.html";
     })
     .catch((error) => {
       const errorCode = error.code;
