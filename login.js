@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-import { signInWithPopup, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -47,4 +47,7 @@ signin.addEventListener('click', (e) => {
       alert("uh oh!")
     });
 })
+
+
+
 

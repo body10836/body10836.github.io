@@ -50,5 +50,8 @@ reg.addEventListener('click', (e) => {
       console.log(errorCode + errorMessage)
 
     });
+
 });
 
+
+var log_out = document.getElementById('log_out')
