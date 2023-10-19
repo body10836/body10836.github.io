@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@500&family=Allura&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
+       
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,6 +113,7 @@
             <img src="/mafeesh_seha.jpg" width="300px" height="170px">
 
             <h1>Abdelrahman</h1>
+            
             <div class="icons">
                 <ion-icon name="logo-facebook"></ion-icon>
                 <ion-icon name="logo-instagram"></ion-icon>
@@ -118,6 +122,33 @@
         </div>
         <br>
         <h1 class="backend">Back End</h1>
+
+        <py-env>
+            - pyrebase
+            - random
+        </py-env>
+        <py-script>
+            import random
+            import pyrebase
+            firebaseConfig ={
+              "apiKey": "AIzaSyCw5jTOHFYc0sE31RycWo5O2KWCnJpEP-8",
+              "authDomain": "nextpage-b8d10.firebaseapp.com",
+              "databaseURL": "https://nextpage-b8d10-default-rtdb.firebaseio.com",
+              "projectId": "nextpage-b8d10",
+              "storageBucket": "nextpage-b8d10.appspot.com",
+              "messagingSenderId": "683648768463",
+              "appId": "1:683648768463:web:7deb07939391f2f972daba",
+              "measurementId": "G-2ZQ4V6LBMD"
+            }
+            
+            firebase =  pyrebase.initialize_app(firebaseConfig)
+            db = firebase.database()
+            data = {"name":"abdo","name2":"bdfnir"}
+            db.push(data)
+            db.child("topics").set(data)
+            
+
+        </py-script>
 
 
 
