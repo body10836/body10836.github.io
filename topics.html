@@ -25,10 +25,17 @@
     <input pys-onClick="sub" type="submit" id="btn-form" value="submit">
 
     <py-env>
-        - pyrebase
-        - random
+        
         - wikipedia
     </py-env>
+    <py-config>
+        - autoclose_loader: false
+        - runtimes:
+          -
+            src: "https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"
+            name: pyodide-0.20
+            lang: python
+    </py-config>
     <py-script>
         import random
        
