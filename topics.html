@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topics</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <py-env>
         - random
         - wikipedia
@@ -16,7 +18,7 @@
         <option value="Art">Art</option>
         <option value="Sport">Sport</option>
         <option value="Programming">Programming</option>
-        <option value="Programming">Programming</option>
+        <option value="Programming">blabalabla</option>
         <option value="Programming">Programming</option>
         <option value="Programming">Programming</option>
         <option value="Programming">Programming</option>
@@ -37,7 +39,7 @@
 
         def sub(*args,**kwargs):
             result_place = Element('output')
-            wiki = wikipedia.summary(f"{Element('interested).value}",sentence=10)
+            wiki = wikipedia.summary(f"{Element('interested).value}",sentence=random.randint(10,30))
             result_place.write(wiki)
 
 
