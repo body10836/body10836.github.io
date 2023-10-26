@@ -20,6 +20,9 @@
         <option value="Programming">Programming</option>
         <option value="Programming">Programming</option>
     </select>
+    <p>Output:</p>
+    <p id = 'output'></p>
+    <input pys-onClick="sub" type="submit" id="btn-form" value="submit">
 
     <py-env>
         - pyrebase
@@ -42,16 +45,14 @@
         "measurementId": "G-2ZQ4V6LBMD"
         }
 
+        def sub(*args,**kwargs):
+            result_place = Element('output')
+            result_place.write(f"wikipedia.summary("{Element('interested).value}",sentence=10)")
+
         firebase = pyrebase.initialize_app(firebaseConfig)
         db = firebase.database()
 
-        result = wikipedia.search("Art", results = 2)
-        data = wikipedia.summary("Art",sentence=10)
-
-        data = {"topic":result1}
-        db.push(data)
-        db.child("topics").set(data)
-        print(data)
+       
 
 
 
