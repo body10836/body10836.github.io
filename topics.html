@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topics</title>
+    <py-env>
+        - random
+        - wikipedia
+    </py-env>
 </head>
 <body>
     <select name="interested" id="interested">
@@ -24,34 +28,20 @@
     <p id = 'output'></p>
     <input pys-onClick="sub" type="submit" id="btn-form" value="submit">
 
-    <py-env>
-        
-        - wikipedia
-    </py-env>
-    <py-config>
-        - autoclose_loader: false
-        - runtimes:
-          -
-            src: "https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"
-            name: pyodide-0.20
-            lang: python
-    </py-config>
+    
     <py-script>
         import random
-       
         import wikipedia
 
        
 
         def sub(*args,**kwargs):
             result_place = Element('output')
-            result_place.write(f"wikipedia.summary("{Element('interested).value}",sentence=10)")
+            wiki = wikipedia.summary(f"{Element('interested).value}",sentence=10)
+            result_place.write(wiki)
+
 
         
-       
-
-
-
     </py-script>
 
 
