@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics</title>
+</head>
+<body>
+    <select name="interested" id="interested">
+        <option value="Art">Art</option>
+        <option value="Sport">Sport</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+        <option value="Programming">Programming</option>
+    </select>
+
+    <py-env>
+        - pyrebase
+        - random
+        - wikipedia
+    </py-env>
+    <py-script>
+        import random
+        import pyrebase
+        import wikipedia
+
+        firebaseConfig ={
+        "apiKey": "AIzaSyCw5jTOHFYc0sE31RycWo5O2KWCnJpEP-8",
+        "authDomain": "nextpage-b8d10.firebaseapp.com",
+        "databaseURL": "https://nextpage-b8d10-default-rtdb.firebaseio.com",
+        "projectId": "nextpage-b8d10",
+        "storageBucket": "nextpage-b8d10.appspot.com",
+        "messagingSenderId": "683648768463",
+        "appId": "1:683648768463:web:7deb07939391f2f972daba",
+        "measurementId": "G-2ZQ4V6LBMD"
+        }
+
+        firebase = pyrebase.initialize_app(firebaseConfig)
+        db = firebase.database()
+
+        result = wikipedia.search("Art", results = 2)
+        data = wikipedia.summary("Art",sentence=10)
+
+        data = {"topic":result1}
+        db.push(data)
+        db.child("topics").set(data)
+        print(data)
+
+
+
+    </py-script>
+
+
+
+</body>
+</html>
