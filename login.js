@@ -35,7 +35,7 @@ signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    alert("signed in" + "" + user.displayName )
+    alert("signed in" + " " + user.displayName )
     document.location = "/homepage.html";
     
    
