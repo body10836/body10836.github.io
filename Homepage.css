@@ -6,11 +6,14 @@
     font-family: 'Allura', cursive;
     font-family: 'AR One Sans', sans-serif;
 }
-
 body {
-    background-image: linear-gradient(rgba(4, 59, 72), rgb(2, 49, 62), rgb(1, 6, 7)), url(image.jpeg);
+    
+    background-image: url(stars1.jpeg);
+    background-color:rgb(2, 28, 55);
+
+    /* background-image: linear-gradient(rgba(4, 59, 72), rgb(2, 49, 62), rgb(1, 6, 7)), url(image.jpeg);
     min-height: 100vh;
-    width: 100%;
+    width: 100%; */
 }
 
 nav {
@@ -28,8 +31,7 @@ nav img {
 }
 
 .bar {
-    
-    padding-left: 750px;
+    padding-left: 538px;
 }
 
 .bar ul li {
@@ -44,15 +46,13 @@ nav img {
 }
 
 .bar ul li a:hover {
-    color: #0cd0c6;
+    color: #009ed3;
 }
-
 .LOGO {
     color: rgb(60, 172, 228);
     text-decoration: none;
     margin-right: 70px;
 }
-
 .text {
     color: aliceblue;
     position: absolute;
@@ -62,12 +62,10 @@ nav img {
     top: 50%;
     width: 60%;
 }
-
 .text h1 {
     font-size: 45px;
     margin: 21px;
 }
-
 .text p {
     font-size: 19px;
 }
@@ -104,33 +102,87 @@ nav img {
     font-family: 'AR One Sans', sans-serif;
     color: #a9bfc5;
 }
-
 .our_team {
     margin-top: 50px;
-    margin-left: 385px;
+    margin-left: 270px;
     display: flex;
     justify-content: flex-start;
-    
 }
-
-
-
 .our_team div {
     margin-right: 3px;
 }
-
 .our_team div:last-child {
     margin-right: 0;
 }
 
 .ourteam2 {
     margin-top: 50px;
-    margin-left: 300px;
-    
-    
+    margin-left: 300px;   
 }
 .members1{
     margin: auto;
     margin-top: -246px;
     margin-left: -300px;
+}
+.Abdelrahman :hover{
+    transform: translateY(14px);
+}
+.Mariam :hover{
+    transform: translateY(14px);
+}
+.Yahia:hover{
+    transform: translateY(14px);
+}
+.Rana:hover{
+    transform: translateY(14px);
+}
+.Omar:hover{
+    transform: translateY(14px);
+}
+
+.OT{
+    margin-top: 50px;
+
+}
+
+.TOPICS{
+    margin-top: 800px;
+    margin-left: 270px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.old_topic{
+    margin-top: -51px;
+    margin-left: -500px;
+}
+
+.new_topic{
+    margin-top: -50px;
+    margin-left: 450px;   
+}
+.old_topic:hover{
+    transform: translateY(14px);
+}
+.new_topic:hover{
+    transform: translateY(14px);
+}
+
+.AP{
+    transform: translate(-1%, -50%);
+}
+.textN{
+    margin-left: 429px;
+    margin-top: 20px;
+    color: #87abcf;
+}
+.textD{
+    margin-left: 765px;
+    margin-top: -33px;
+    color:#87abcf;
+}
+.TS{
+    margin-left: 620px; 
+    color: #f9f6f6;
+    transform: translate(-1vh, 105vh);
 }
