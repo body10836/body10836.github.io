@@ -72,8 +72,10 @@ createUserWithEmailAndPassword(auth,email,password)
         uid : user.uid,
         created_at :  Date.now(),
         last_login : null
+
       });
-    
+      
+      reference = FirebaseDatabase.getInstance().getReference("users").child("username");
     // ...
   })
   
@@ -82,6 +84,7 @@ createUserWithEmailAndPassword(auth,email,password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+
     // ..
     alert("uh oh!"+ error + errorMessage)
     console.log(errorCode+ errorMessage)
