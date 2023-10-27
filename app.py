@@ -10,12 +10,12 @@ app = Flask(__name__)
 
 def home(): 
 	if request.method == "GET": 
-		return render_template("index.html") 
+		return render_template("topics.html") 
 	else: 
 		search = request.form["options"] 
 		wiki = wikipedia.search(search)
 		
-		page = wikipedia.page(wiki[3])
+		page = wikipedia.page(wiki[0])
 		title= page.title
 		catagories = page.categories
 		content = page.content
@@ -31,6 +31,7 @@ def home():
 		# Fetch data from wikipedia 
         
 		result = wikipedia.summary(page, sentences=sentence) 
+		
 		
 		return f"<h1>{result}</h1>" 
 
