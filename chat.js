@@ -36,14 +36,17 @@ reqName.addEventListener('keydown', (e) =>{
     .then((snapshot) => {
       const pic = snapshot.val().profile_picture
       const name = snapshot.val().username
+      const email = snapshot.val().email
       
       const picture = document.createElement("img")
+      
       picture.className = "pfp"
       picture.src = pic
       const user_info = {
         username : document.createElement("span"),
         br : document.createElement('br'),
         pfp : picture.value
+        
       }
       if (name.length >= 14 ){
         name.substring(0,12)
@@ -54,6 +57,7 @@ reqName.addEventListener('keydown', (e) =>{
       user.appendChild(picture)
       user.appendChild(user_info.username) 
       user.appendChild(user_info.br)
+      
       
       const container = document.getElementById("rcorners2").appendChild(user);
       

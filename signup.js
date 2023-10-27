@@ -57,7 +57,7 @@ createUserWithEmailAndPassword(auth,email,password)
     }).then(() => {
        alert("signed up " )
        console.log(user)
-       document.location = "/ay 7aga.html";
+       document.location = "/login.html";
       
     }).catch((error) => {
       // An error occurred
