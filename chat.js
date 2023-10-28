@@ -17,6 +17,7 @@ const firebaseConfig = {
   measurementId: "G-2ZQ4V6LBMD"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
@@ -24,11 +25,8 @@ const auth = getAuth(app)
 
 
 const reqName = document.getElementById("username_for_finding")
-// msg_cont.innerHTML = "<br>"
-function foobar() {
-  msg_cont.innerHTML += "<br> You : " + message;
-  message.value = "";
-}
+
+
 
 reqName.addEventListener('keydown', (e) =>{
   if (e.keyCode === 13){
@@ -76,9 +74,6 @@ reqName.addEventListener('keydown', (e) =>{
             
 
       })
-
-      
-      
       const container = document.getElementById("rcorners2").appendChild(user);
       
       
@@ -92,6 +87,7 @@ reqName.addEventListener('keydown', (e) =>{
  };
 })
 
+//send
 message.addEventListener("keydown", (e) => {
   console.log("aki")
   onAuthStateChanged(auth, (user) => {
@@ -114,9 +110,10 @@ message.addEventListener("keydown", (e) => {
       let msg_cont = document.getElementById("message-container")
       let message_value = document.getElementById("message")
       let other_side = document.createElement("div")
-      other_side.innerText += "You: " + message_value.value
+      other_side.innerText += "You: " + message_value.value 
+      other_side.innerHTML += "<br>"
       other_side.className = "other_side"
-      other_side.innerHTML += `<span>${snapshot.val().m}</span>`
+    
       console.log(other_side)
       msg_cont.appendChild(other_side)
       msg_cont.innerHTML += "<br>"
@@ -150,41 +147,8 @@ message.addEventListener("keydown", (e) => {
   
 })
 })
-// document.addEventListener("DOMContentLoaded", (e) => {
-//   const db_ref = ref(db,"chats/")
-//   get(db_ref + name)
-//   .then((snapshot) => {
-//     if (snapshot.exists())
-//       if (snapshot.val().reciver === user.displayName){
-//         get(ref(db,"users/" + snapshot.val().sender))
-//         .then((snapshot) => {
-//           const pic = snapshot.val().profile_picture
-//   const name = snapshot.val().username
-//   const email = snapshot.val().email
-//   const user_info = {
-//     username : document.createElement("span"),
-//     br : document.createElement("br"),
-//     pfp : document.createElement("img")
-    
-    
-//   }
-//   function displayMessage(){
-    
-//   }
-  
-//   user_info.pfp.src = pic
-//   user_info.pfp.className = "pfp"
-//   user_info.username.innerHTML = name
-//   user_info.username.className = "text"
-//   user.className = "btn btn-outline-*"
-//   user_info.username.innerHTML = name
-//   user.appendChild(picture)
-//   user.appendChild(user_info.username) 
-  
-//         })
-//       }
-//   });
-// })
+
+// if page is loaded, find messages
 window.addEventListener("load", (e) => {
 onAuthStateChanged(auth, (myself) => {
   console.log(myself.displayName)
@@ -224,41 +188,21 @@ onAuthStateChanged(auth, (myself) => {
       const container = document.getElementById("rcorners2").appendChild(user);
       user.addEventListener("click",(e) =>{
         console.log(sender)
-        get(ref(db,"chats/" + sender + myself.displayName))
+        get(ref(db,"chats/" + myself.displayName+ "/" + sender ))
         .then((snapshot) => {
-          msg_cont.innerHTML += 
+          msg_cont.innerHTML += snapshot.val().m
           console.log(snapshot.val())
         })
       })
-  
+      get(ref(db,"chats/" + myself.displayName+ "/" + sender ))
+      .then((snapshot) => {
+        msg_cont.innerHTML += snapshot.val().m
+        console.log(snapshot.val())
+      })
      })
     }
   })
 })
 
 })
-
-
-
- 
-
-
-// const button = document.getElementById("sub");
-
-// button.addEventListener('click', (e) =>{
-  
-//   const db = getDatabase(app)
-//   const username = document.getElementById("email").value
-//     get(ref(db, 'users/' + (username)))
-//     .then((snapshot) => {
-//       const data = snapshot.val().profile_picture
-//       const img = document.getElementById("pfp").src=data
-//       console.log(data);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       alert(username +" not found "+ err )
-//   });
-      
-//   })
 
