@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <style>
+  
+
+        @keyframes gradient-animation {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+          .center{
+            text-align: center;
+            padding-bottom: 5%;
+            color: white;
+          }
+          body{
+            background: linear-gradient(300deg,#2C4B5D,#032A39,#000709);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 700px;
+          }
+          .pfp{
+            width: 240px;
+          }
+        </style>
+        <div>
+        <img id="pfp" class="pfp">
+        <br>
+        <span id="Username"  style="color: white; padding-left: 70px; font-size: 50px"></span>
+        <button onclick="document.location = './LG.html'">Log Out</button></div>
+        <script src="profile.js" type="module"></script>
+</body>
+</html>

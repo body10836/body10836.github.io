@@ -8,8 +8,9 @@
 }
 body {
     
-    background-image: url(stars1.jpeg);
-    background-color:rgb(2, 28, 55);
+     background-image: 
+     url(stars1.jpeg);
+     background-color:rgb(2, 28, 55);
 
     /* background-image: linear-gradient(rgba(4, 59, 72), rgb(2, 49, 62), rgb(1, 6, 7)), url(image.jpeg);
     min-height: 100vh;
@@ -152,21 +153,7 @@ nav img {
     justify-content: flex-start;
 }
 
-.old_topic{
-    margin-top: -51px;
-    margin-left: -500px;
-}
 
-.new_topic{
-    margin-top: -50px;
-    margin-left: 450px;   
-}
-.old_topic:hover{
-    transform: translateY(14px);
-}
-.new_topic:hover{
-    transform: translateY(14px);
-}
 
 .AP{
     transform: translate(-1%, -50%);
