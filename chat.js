@@ -183,7 +183,7 @@ window.addEventListener("load", (e) => {
 onAuthStateChanged(auth, (myself) => {
   console.log(myself.displayName)
   const db = getDatabase(app)
-  const db_ref = ref(db,"chats/"+ myself.displayName)
+  
   get(ref(db,"chats/"+ myself.displayName))
   .then((snapshot) => {
     console.log(snapshot.val())
@@ -191,6 +191,13 @@ onAuthStateChanged(auth, (myself) => {
      const message = snapshot.val()
      const sender = message.sender
      console.log(sender)
+     let msg_cont = document.getElementById("message-container")
+     const db_ref = ref(db,"chats/"+ myself.displayName+"/" +sender)
+     get(db_ref)
+     .then((snapshot) => {
+      other_side = document.createElement
+       msg_cont.innerText += snapshot.val().m
+     })
      get(ref(db,"users/" + sender))
      .then((snapshot) =>{
       console.log(snapshot.val())
