@@ -93,6 +93,7 @@ reqName.addEventListener('keydown', (e) =>{
 })
 
 message.addEventListener("keydown", (e) => {
+  console.log("aki")
   onAuthStateChanged(auth, (user) => {
   const message_value = document.getElementById("message")
   if (e.keyCode === 13 ){
@@ -111,10 +112,15 @@ message.addEventListener("keydown", (e) => {
       }
       user_info.username.innerHTML = name
       let msg_cont = document.getElementById("message-container")
-    let msg = document.createElement("span")
-    msg.innerText = "You:" + message_value.value 
-    msg.innerHTML += "<br>"
-    msg_cont.appendChild(msg)
+      let message_value = document.getElementById("message")
+      let other_side = document.createElement("div")
+      other_side.innerText += "You: " + message_value.value
+      other_side.className = "other_side"
+      other_side.innerHTML += `<span>${snapshot.val().m}</span>`
+      console.log(other_side)
+      msg_cont.appendChild(other_side)
+      msg_cont.innerHTML += "<br>"
+
     let message_number = 0;
     
       console.log("alo")
@@ -195,8 +201,7 @@ onAuthStateChanged(auth, (myself) => {
      const db_ref = ref(db,"chats/"+ myself.displayName+"/" +sender)
      get(db_ref)
      .then((snapshot) => {
-      other_side = document.createElement
-       msg_cont.innerText += snapshot.val().m
+      let message = snapshot.val().m
      })
      get(ref(db,"users/" + sender))
      .then((snapshot) =>{
@@ -218,9 +223,10 @@ onAuthStateChanged(auth, (myself) => {
       console.log(user_info.username)
       const container = document.getElementById("rcorners2").appendChild(user);
       user.addEventListener("click",(e) =>{
+        console.log(sender)
         get(ref(db,"chats/" + sender + myself.displayName))
         .then((snapshot) => {
-          console.log("check")
+          msg_cont.innerHTML += 
           console.log(snapshot.val())
         })
       })
