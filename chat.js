@@ -118,12 +118,20 @@ message.addEventListener("keydown", (e) => {
     let message_number = 0;
     
       console.log("alo")
-      const db_ref = ref(db,"chats/" + user.displayName + " to " + name)
+      const db_ref = ref(db,"chats/" + name)
       console.log(name)
       set(db_ref,{
-        message : [message_value.value],
-        message_number : [++message_number]
+        [user.displayName] : {
+          m : `${message_value.value}`,
+         
+        
+        },
+        sender : user.displayName,
+        reciver : name
+        
       })
+      
+      
     
     
     })
@@ -136,7 +144,86 @@ message.addEventListener("keydown", (e) => {
   
 })
 })
+// document.addEventListener("DOMContentLoaded", (e) => {
+//   const db_ref = ref(db,"chats/")
+//   get(db_ref + name)
+//   .then((snapshot) => {
+//     if (snapshot.exists())
+//       if (snapshot.val().reciver === user.displayName){
+//         get(ref(db,"users/" + snapshot.val().sender))
+//         .then((snapshot) => {
+//           const pic = snapshot.val().profile_picture
+//   const name = snapshot.val().username
+//   const email = snapshot.val().email
+//   const user_info = {
+//     username : document.createElement("span"),
+//     br : document.createElement("br"),
+//     pfp : document.createElement("img")
+    
+    
+//   }
+//   function displayMessage(){
+    
+//   }
   
+//   user_info.pfp.src = pic
+//   user_info.pfp.className = "pfp"
+//   user_info.username.innerHTML = name
+//   user_info.username.className = "text"
+//   user.className = "btn btn-outline-*"
+//   user_info.username.innerHTML = name
+//   user.appendChild(picture)
+//   user.appendChild(user_info.username) 
+  
+//         })
+//       }
+//   });
+// })
+window.addEventListener("load", (e) => {
+onAuthStateChanged(auth, (myself) => {
+  console.log(myself.displayName)
+  const db = getDatabase(app)
+  const db_ref = ref(db,"chats/"+ myself.displayName)
+  get(ref(db,"chats/"+ myself.displayName))
+  .then((snapshot) => {
+    console.log(snapshot.val())
+    if(snapshot.exists()){
+     const message = snapshot.val()
+     const sender = message.sender
+     console.log(sender)
+     get(ref(db,"users/" + sender))
+     .then((snapshot) =>{
+      console.log(snapshot.val())
+      const sendername = snapshot.val().username
+      const pfp = snapshot.val().profile_picture
+      let user_info = {
+        username : document.createElement("span"),
+        pfp : document.createElement("img")
+      }
+      user_info.username.innerHTML = sendername
+      user_info.username.className = "text"
+      user_info.pfp.src = snapshot.val().profile_picture
+      user_info.pfp.className = "pfp"
+      let user = document.createElement("button")
+      user.className = "btn btn-outline-*"
+      user.appendChild(user_info.pfp)
+      user.appendChild(user_info.username)
+      console.log(user_info.username)
+      const container = document.getElementById("rcorners2").appendChild(user);
+      user.addEventListener("click",(e) =>{
+        get(ref(db,"chats/" + sender + myself.displayName))
+        .then((snapshot) => {
+          console.log("check")
+          console.log(snapshot.val())
+        })
+      })
+  
+     })
+    }
+  })
+})
+
+})
 
 
 
