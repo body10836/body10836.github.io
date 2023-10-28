@@ -98,7 +98,7 @@ message.addEventListener("keydown", (e) => {
   if (e.keyCode === 13 ){
     if (message_value.value != ""){
       const db = getDatabase(app)
-      get(ref(db, 'users/' + user.displayName))
+      get(ref(db, 'users/' + reqName.value))
     .then((snapshot) => {
       const pic = snapshot.val().profile_picture
       const name = snapshot.val().username
@@ -118,7 +118,7 @@ message.addEventListener("keydown", (e) => {
     let message_number = 0;
     
       console.log("alo")
-      const db_ref = ref(db,"chats/" + "Hana")
+      const db_ref = ref(db,"chats/" + user.displayName + " to " + name)
       console.log(name)
       set(db_ref,{
         message : [message_value.value],
