@@ -71,11 +71,11 @@ createUserWithEmailAndPassword(auth,email,password)
         profile_picture : photo,
         uid : user.uid,
         created_at :  Date.now(),
-        last_login : null
+   
 
       });
       
-      reference = FirebaseDatabase.getInstance().getReference("users").child("username");
+      // reference = FirebaseDatabase.getInstance().getReference("users").child("username");
     // ...
   })
   

@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getDatabase, set, ref, get} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+import { getDatabase, set, ref, get, child} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+// import {click} from "https://code.jquery.com/jquery-3.7.1.min.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,12 +19,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const msg_cont = document.getElementById("message-container")
-const button = document.getElementById("zoom");
+const auth = getAuth(app)
+
+
+
 const reqName = document.getElementById("username_for_finding")
 // msg_cont.innerHTML = "<br>"
 function foobar() {
-  const message = document.getElementById("message").value;
   msg_cont.innerHTML += "<br> You : " + message;
   message.value = "";
 }
@@ -32,6 +34,7 @@ reqName.addEventListener('keydown', (e) =>{
   if (e.keyCode === 13){
     const db = getDatabase(app)
     const reqName = document.getElementById("username_for_finding").value;
+    // set(ref(db, "chats/" + ))
     get(ref(db, 'users/' + reqName))
     .then((snapshot) => {
       const pic = snapshot.val().profile_picture
@@ -44,37 +47,101 @@ reqName.addEventListener('keydown', (e) =>{
       picture.src = pic
       const user_info = {
         username : document.createElement("span"),
-        br : document.createElement('br'),
+        br : document.createElement("br"),
         pfp : picture.value
         
       }
-      if (name.length >= 14 ){
-        name.substring(0,12)
-      }; 
+      
       const user = document.createElement("button")
+      user_info.username.className = "text"
       user.className = "btn btn-outline-*"
       user_info.username.innerHTML = name
       user.appendChild(picture)
       user.appendChild(user_info.username) 
-      user.appendChild(user_info.br)
+      
+      user.addEventListener("click",(e) =>{
+        //select user
+        onAuthStateChanged(auth, (user) => {
+          if (user){
+            set(ref(db, "chats/" + (name)),{
+              sender : [user.displayName]
+              
+            })
+          }
+          else{
+            alert("you need to be signed in to use the chat ")
+          }
+        })
+       
+            
+
+      })
+
       
       
       const container = document.getElementById("rcorners2").appendChild(user);
+      
       
       
       console.log();
     })
     .catch((err) => {
       console.error(err);
-      alert("user" +" not found "+ err )
+      alert( err )
   });
  };
 })
+
+message.addEventListener("keydown", (e) => {
+  onAuthStateChanged(auth, (user) => {
+  const message_value = document.getElementById("message")
+  if (e.keyCode === 13 ){
+    if (message_value.value != ""){
+      const db = getDatabase(app)
+      get(ref(db, 'users/' + user.displayName))
+    .then((snapshot) => {
+      const pic = snapshot.val().profile_picture
+      const name = snapshot.val().username
+      const email = snapshot.val().email
+      const user_info = {
+        username : document.createElement("span"),
+        br : document.createElement("br"),
+        
+        
+      }
+      user_info.username.innerHTML = name
+      let msg_cont = document.getElementById("message-container")
+    let msg = document.createElement("span")
+    msg.innerText = "You:" + message_value.value 
+    msg.innerHTML += "<br>"
+    msg_cont.appendChild(msg)
+    let message_number = 0;
+    
+      console.log("alo")
+      const db_ref = ref(db,"chats/" + "Hana")
+      console.log(name)
+      set(db_ref,{
+        message : [message_value.value],
+        message_number : [++message_number]
+      })
+    
+    
+    })
+      
+    
+    }
+    
   
+  }
   
-button.addEventListener('click', (e) =>{
-  alert("cdfg")
- })
+})
+})
+  
+
+
+
+ 
+
 
 // const button = document.getElementById("sub");
 
